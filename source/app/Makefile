@@ -1,6 +1,15 @@
 APP=listapp
+objects=IXListApp.o ../mem/IXMalloc.o
 
 
-$APP:IXListApp.c ../mem/IXMalloc.c
-	gcc ../mem/IXMalloc.c IXListApp.c -o listapp
+$APP: $(objects)
+	gcc -o $(APP) $(objects)
 
+$(objects): ../includes/IXMalloc.h
+IXListApp.o: ../mem/IXMalloc.o
+
+
+
+.PHONY : clean
+clean:
+	rm -rf $(APP) $(objects)
