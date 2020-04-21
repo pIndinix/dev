@@ -3,6 +3,7 @@
 */
 
 #include <stdlib.h>
+#include <IXMalloc.h>
 
 void *inMemAlloc(size_t size) {
     return malloc(size);

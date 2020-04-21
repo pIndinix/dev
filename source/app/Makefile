@@ -2,7 +2,7 @@ APP=listapp
 objects=IXListApp.o ../mem/IXMalloc.o
 
 
-$APP: $(objects)
+$(APP): $(objects)
 	gcc -o $(APP) $(objects)
 
 $(objects): ../includes/IXMalloc.h
