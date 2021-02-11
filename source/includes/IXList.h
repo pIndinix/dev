@@ -1,15 +1,28 @@
 #ifndef __IX_LIST_H__
 #define __IX_LIST_H__
 
-typedef struct _IXListHead {
+#include <inttypes.h>
+
+/*
+typedef struct _IXListMHead {
     struct _IXListHead *next;
-    struct _IXListHead *prev;
 } IXListHead;
 
-typedef _IXListNode {
+typedef struct _IXListMNode {
     IXListHead *head;
-    void *contatiner;
+    void *container;
 } IXListNode;
+*/
+
+typedef struct _IXListHead { 
+    int next; /*offsets are the links in file backed linked list*/
+};
+
+typedef struct _IXListNode {
+    /* data */
+    _IXListHead head;
+    uint8_t *data[10];
+};
 
 /*
 * func: initNode(IXListNode *node)

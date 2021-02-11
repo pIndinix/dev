@@ -5,7 +5,7 @@ CFLAGS+= -I ../includes
 LDFLAGS=
 
 OBJDIR := objs
-objects = $(addprefix $(OBJDIR)/,IXMalloc.o memUT.o)
+objects = $(addprefix $(OBJDIR)/,IXMalloc.o IXFalloc.o memUT.o)
 
 
 $(OBJDIR)/%.o : %.c
