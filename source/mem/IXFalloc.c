@@ -5,7 +5,7 @@
 #include <fcntl.h>
 #include <unistd.h>
 
-static char *_fileName = "list.dat";
+static char *_fileName = "list.txt";
 static int _fd;
 static int _offset = 0;
 
@@ -51,10 +51,11 @@ void *fAlloc(int size, int *offset) {
         perror("write");
         return NULL;
     }
+
     *offset = _offset - (size - 1);
 
     printf("offset = %d\n", *offset);
-    
+    printf("size = %d\n", size);
     if((addr = fMap(_fd, *offset, size)) == NULL) {
         return NULL;
     }

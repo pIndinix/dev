@@ -4,7 +4,9 @@
 
 
 #include <stdio.h>
+#include <string.h>
 #include <stdlib.h>
+#include <unistd.h>
 #include <fcntl.h>
 #include <IXMalloc.h>
 #include <IXFalloc.h>
@@ -30,17 +32,21 @@ int test_IXMalloc()
 
 int test_IXFalloc() {
     char *addr = NULL;
+    char *data = "This should be node";
     int offset = 0;
     if(fInit() < 0) {
         printf("Init fail\n");
     }
 
-    if((addr = fAlloc(20, &offset)) == NULL) {
+
+    if((addr = fAlloc(getpagesize(), &offset)) == NULL) {
         printf("fAlloc failed\n");
+        return -1;
     }
 
+    memcpy(addr, data, strlen(data));
 
-    fUnMap(addr, 20);
+    //fUnMap(addr, getpagesize());
     return 0;
 }
 
